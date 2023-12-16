@@ -1,0 +1,25 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "typeRoots": ["node_modules/@types"],
+    "target": "ES5",
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "paths": {
+      "assets/*": ["src/shared/assets/*"],
+      "pages/*": ["src/pages/*"],
+      "layouts/*": ["src/layouts/*"],
+      "shared/*": ["src/shared/*"],
+      "app/*": ["src/app/*"]
+    }
+  },
+  "include": ["src/**/*", "declaration.d.ts"],
+  "exclude": ["node_modules"]
+}

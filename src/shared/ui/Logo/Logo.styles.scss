@@ -1,0 +1,17 @@
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-size: 9.6rem;
+  margin-right: 1rem;
+}
+
+.transcript {
+  font-size: 2rem;
+  font-weight: var(--fw-light);
+  max-height: 9.6rem;
+  overflow: hidden;
+  max-width: 10rem;
+}

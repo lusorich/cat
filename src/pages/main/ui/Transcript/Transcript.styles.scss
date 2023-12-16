@@ -1,0 +1,15 @@
+.wrapper {
+  height: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.text {
+  font-size: 9.6rem;
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
