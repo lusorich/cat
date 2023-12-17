@@ -6,7 +6,10 @@ import {
 } from 'react-redux';
 import { coinbaseApi } from 'shared/api/coinbase/coinbase';
 
-import { currencieSlice } from './slices/currencie/currencie';
+import {
+  type CurrencieState,
+  currencieSlice,
+} from './slices/currencie/currencie';
 
 export const store = configureStore({
   reducer: {
@@ -19,7 +22,11 @@ export const store = configureStore({
 
 export type IAppDispatch = typeof store.dispatch;
 
+interface GlobalState {
+  currencies: CurrencieState;
+}
+
 export const useAppDispatch = () => useDispatch<IAppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<any> = useSelector;
+export const useAppSelector: TypedUseSelectorHook<GlobalState> = useSelector;
 
 export const dispatch = store.dispatch;

@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 
 import 'assets/scss/fonts.scss';
 import 'assets/scss/global.scss';
-import 'assets/scss/constants.scss';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);

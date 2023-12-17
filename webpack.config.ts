@@ -2,6 +2,7 @@ import path from 'path';
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import StatoscopePlugin from '@statoscope/webpack-plugin';
 
 const isDev = process.env.MODE !== 'production';
 
@@ -70,6 +71,7 @@ const config: Configuration = {
       chunkFilename: '[name].[contenthash].css',
       ignoreOrder: false,
     }),
+    new StatoscopePlugin(),
   ],
 };
 

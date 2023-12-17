@@ -1,3 +1,5 @@
+@import 'assets/scss/constants';
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -8,4 +10,8 @@
   background-image: url('../../../shared//assets/img/Kitten.png');
   background-repeat: no-repeat;
   background-position: top right;
+
+  @media screen and (max-width: $bp-mobile) {
+    background-image: none;
+  }
 }

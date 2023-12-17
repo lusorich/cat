@@ -7,7 +7,7 @@ import { Logo, Select } from 'shared/ui';
 import s from './Currencie.styles.scss';
 
 export const Currencie = () => {
-  const { data, isFetching } = useGetCurrenciesQuery();
+  const { data, isFetching, isError } = useGetCurrenciesQuery();
 
   const onChange = (item: CurrencieItem) => {
     dispatch(setActiveCurrencie(item));
@@ -16,12 +16,15 @@ export const Currencie = () => {
   return (
     <section className={s.wrapper}>
       <Logo />
-      <Select
-        list={data?.data}
-        onChange={onChange}
-        defaultValue={data?.data?.[0]}
-        isLoading={isFetching}
-      />
+      <div className={s.selectWrapper}>
+        <Select
+          list={data?.data}
+          onChange={onChange}
+          defaultValue={data?.data?.[0]}
+          isLoading={isFetching}
+          isDisabled={isError || isFetching}
+        />
+      </div>
     </section>
   );
 };

@@ -1,4 +1,16 @@
+@import 'assets/scss/constants';
+
 .wrapper {
   height: 45%;
   padding-left: 3rem;
+
+  @media screen and (max-width: $bp-mobile) {
+    padding-left: 1rem;
+  }
+}
+
+.selectWrapper {
+  @media screen and (max-width: $bp-mobile) {
+    padding-left: 4rem;
+  }
 }

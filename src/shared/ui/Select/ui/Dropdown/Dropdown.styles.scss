@@ -1,3 +1,5 @@
+@import 'assets/scss/constants';
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -22,19 +24,18 @@
 
 .list {
   width: 100%;
-
   list-style: none;
   padding: 0;
   margin: 0;
-
   max-height: 100%;
   overflow-y: auto;
+  border: 1px solid $border-secondary;
 }
 
 .text {
-  font-size: 1.8rem;
+  font-size: $fs-xs;
   line-height: normal;
-  font-weight: var(--fw-light);
+  font-weight: $fw-light;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -44,21 +45,15 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.5rem;
-  background-color: white;
+  background-color: $background-tertiary;
+  max-height: 4.3rem;
 
   cursor: pointer;
 
-  &:nth-child(2n) {
-    border: 1px solid var(--border-secondary);
-  }
+  border-bottom: 1px solid $border-secondary;
 
-  &:nth-child(2n + 1) {
-    border-left: 1px solid var(--border-secondary);
-    border-right: 1px solid var(--border-secondary);
-  }
-
-  &:first-child {
-    border-top: 1px solid var(--border-secondary);
+  &:last-child {
+    border-bottom: unset;
   }
 
   &:hover {
@@ -66,7 +61,8 @@
   }
 
   &.active {
-    background-color: var(--background-secondary);
-    border: 2px solid var(--border-secondary);
+    background-color: $background-secondary;
+    border-top: 1px solid $border-secondary;
+    border-bottom: 2px solid $border-secondary;
   }
 }

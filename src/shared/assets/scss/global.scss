@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  line-height: 1.5;
+  line-height: 1.25;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -52,4 +52,17 @@ h6 {
 main {
   isolation: isolate;
   height: 100%;
+}
+
+:global {
+  .visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
 }

@@ -1,4 +1,4 @@
-import { type FC, useState, useEffect } from 'react';
+import { useState, useEffect, type KeyboardEvent } from 'react';
 
 import TriangleIcon from 'assets/icons/chevron.svg';
 import Loader from 'assets/icons/oval.svg';
@@ -13,25 +13,45 @@ export interface SelectItem {
   name: string;
 }
 
-interface SelectProps {
-  list?: SelectItem[];
-  onChange: any;
-  defaultValue?: SelectItem;
+interface SelectProps<T extends SelectItem> {
+  list?: T[];
+  onChange: (item: T) => void;
+  defaultValue?: T;
   isLoading: boolean;
+  isDisabled: boolean;
 }
 
-export const Select: FC<SelectProps> = ({
+export const Select = <T extends SelectItem>({
   list,
   onChange,
   defaultValue,
   isLoading = false,
-}) => {
+  isDisabled = false,
+}: SelectProps<T>) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [activeEl, setActiveEl] = useState(defaultValue);
+  const [activeEl, setActiveEl] = useState<T | undefined>(defaultValue);
 
   const ref = useOutsideClick(() => {
     setIsDropdownOpen(false);
   });
+
+  const handleOnChange = (item: T) => {
+    setActiveEl(item);
+
+    if (onChange) {
+      onChange(item);
+    }
+  };
+
+  const handleSelectClick = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      setIsDropdownOpen(!isDropdownOpen);
+    }
+  };
 
   useEffect(() => {
     if (defaultValue) {
@@ -40,21 +60,14 @@ export const Select: FC<SelectProps> = ({
     }
   }, [defaultValue]);
 
-  const handleOnChange = (item: SelectItem) => {
-    setActiveEl(item);
-
-    if (onChange) {
-      onChange(item);
-    }
-  };
-
   return (
     <div
-      className={s.wrapper}
+      className={cn(s.wrapper, { [s.disabled]: isDisabled })}
       ref={ref}
-      onClick={() => {
-        setIsDropdownOpen(!isDropdownOpen);
-      }}
+      role="button"
+      tabIndex={0}
+      onClick={handleSelectClick}
+      onKeyDown={handleKeyDown}
     >
       <span className={s.inputText}>{activeEl?.id}</span>
       <div className={s.icon}>
