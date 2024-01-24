@@ -1,0 +1,19 @@
+@import 'assets/scss/constants';
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-size: $fs-xl;
+  margin-right: 1rem;
+}
+
+.transcript {
+  font-size: $fs-s;
+  font-weight: $fw-light;
+  max-height: 9.6rem;
+  overflow: hidden;
+  max-width: 10rem;
+}
